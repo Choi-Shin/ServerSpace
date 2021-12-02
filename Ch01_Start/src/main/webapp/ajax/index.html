@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>Document</title>
+</head>
+<script>
+	$(function () {
+		$("#id01").on(
+			"click",
+			function () {
+				alert("data request!");
+				$.ajax({
+					url: "dbfrom.jsp",
+					type: "post",
+					datatype: "text/html utf-8",
+					success: function (t) {
+						console.log(t);
+						$(t).find("person").each(function () {
+							var name = $(this).find('name').text();
+							var age = $(this).find('age').text();
+							var salary = $(this).find('salary').text();
+							$("<h1></h1>").text(name + " " + age + " "
+								+ salary)
+								.appendTo('body');
+						})
+
+					},
+					error: function () {
+						alert("request fail!");
+					}
+				})
+			});
+		$("#id02").on("click", function () {
+			alert("data send!");
+			$.ajax({
+				url: 'dbto.jsp',
+				type: 'post',
+				data: {
+					name: $("#name").val(),
+					age: $("#age").val(),
+					salary: $("#salary").val()
+				},
+				success: function (t) {
+					alert("success!");
+				},
+				error: function (t) {
+					alert("fail!");
+				}
+			})
+		});
+	});
+</script>
+
+<body>
+	<button id="id01">데이터 요청(select_from)</button>
+	<br>
+	<br> 이름:
+	<input type="text" id="name">
+	<br> 나이:
+	<input type="text" id="age">
+	<br> 금액:
+	<input type="text" id="salary">
+	<br>
+	<button id="id02">DB전송(Insert_to)</button>
+	<br>
+	<br>
+</body>
+
+</html>
