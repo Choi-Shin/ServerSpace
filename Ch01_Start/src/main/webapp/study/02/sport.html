@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      fieldset  {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>getParameterValues 실습</h1><br>
+    <form action="Sport" method="post">
+        <fieldset>
+            <legend>좋아하는 운동 및 성별 </legend>
+            <ul>
+                <li>야구 <input type="checkbox" name="sport" value="baseball">
+                    축구 <input type="checkbox" name="sport" value="soccer">
+                    농구 <input type="checkbox" name="sport" value="basketball">
+                </li>
+                <li>남<input type="radio" name="sex" value="male">여<input type="radio" name="sex" value="female"></li>
+                <li><input type="submit" value="전송"></li>
+            </ul>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>

@@ -16,7 +16,7 @@
 request.setCharacterEncoding("utf-8");
 try {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	Class.forName(driver);
 	Connection con = DriverManager.getConnection(url, "jsp", "jsp");
 	Statement stmt = con.createStatement();

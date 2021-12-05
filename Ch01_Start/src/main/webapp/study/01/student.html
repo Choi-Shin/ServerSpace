@@ -2,28 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+	$(function() {
+		$("#insert").on("click", function() {
+			alert("data send!");
+			$.ajax({
+				url : "insert.jsp",
+				type : "post",
+				data : {
+					num : $("#num").val(),
+					name : $("#name").val(),
+					grade : $("#grade").val(),
+					subject : $("#subject").val(),
+					success : function(t) {
+						alert("success!");
+					},
+					error : function(t) {
+						alert("fail!");
+					}
+				}
+			})
+		});
+	});
+</script>
 </head>
 
 <body>
-    <form action="student.jsp" method="get">
-        <p><span>학번: <input type="text" name="num"></span><br>
-            <span>이름: <input type="text" name="name"></span><br>
-            <span>학년: <input type="radio" name="grade" value="1학년">1학년</span>
-            <span><input type="radio" name="grade" value="2학년">2학년</span>
-            <span><input type="radio" name="grade" value="3학년">3학년</span>
-            <span><input type="radio" name="grade" value="4학년">4학년</span><br>
-            <span>선택과목: <select name="subject">
-                <option value="JAVA">JAVA</option>
-                <option value="Python">Python</option>
-                <option value="C++">C++</option>
-                <option value="C#">C#</option>
-            </select></span>
-        </p>
-    </form>
+	<form action="student.jsp" method="get">
+		<p>
+			<span>학번: <input type="text" name="num" id="num"></span><br>
+			<span>이름: <input type="text" name="name" id="name"></span><br>
+			<span>학년: <input type="radio" name="grade" id="grade"
+				value="1학년">1학년
+			</span> <span><input type="radio" name="grade" id="grade" value="2학년">2학년</span>
+			<span><input type="radio" name="grade" id="grade" value="3학년">3학년</span>
+			<span><input type="radio" name="grade" id="grade" value="4학년">4학년</span><br>
+			<span>선택과목: <select name="subject" id="subject">
+					<option value="JAVA">JAVA</option>
+					<option value="Python">Python</option>
+					<option value="C++">C++</option>
+					<option value="C#">C#</option>
+			</select></span><br> <input type="submit" value="입력완료">
+		</p>
+	</form>
+	<button id="insert">데이터 전송</button>
 </body>
-
 </html>
