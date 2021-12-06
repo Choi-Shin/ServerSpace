@@ -3,11 +3,13 @@ package study;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Sport
@@ -23,13 +25,13 @@ public class Sport extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String[] sport = request.getParameterValues("sport");
 		String sex = request.getParameter("sex");
-		PrintWriter out = response.getWriter();
-		if (sport != null) {
-			for (int i = 0; i < sport.length; i++)
-				out.print("<h4>좋아하는 운동: " + sport[i] + "<br>");
-		} else
-			out.println("<h4>좋아하는 운동: 없음");
-		out.println("<br>성별: " + sex);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("s1", sport);
+		session.setAttribute("s2", sex);
+		RequestDispatcher d = request.getRequestDispatcher("sport_mvc2.jsp?id=hong");
+		d.forward(request, response);
+		
 	}
 
 	/**
