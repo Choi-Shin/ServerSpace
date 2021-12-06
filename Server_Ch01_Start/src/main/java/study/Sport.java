@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Sport
  */
-//@WebServlet("/study/02/Sport")
+@WebServlet("/study/02/Sport")
 public class Sport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,22 +20,16 @@ public class Sport extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String[] sport = request.getParameterValues("sport");
 		String sex = request.getParameter("sex");
 		PrintWriter out = response.getWriter();
-		out.println("<h4>좋아하는 운동: ");
 		if (sport != null) {
-			for (int i = 0; i < sport.length; i++) {
-				if (i < sport.length-1) {
-					out.println(sport[i] + ", ");
-				} else {
-					out.println(sport[i] + "<br>"); 
-				}
-			}
-		} else {
-			out.println("없음<br>");
-		}
-		out.println("성별: " + sex);
+			for (int i = 0; i < sport.length; i++)
+				out.print("<h4>좋아하는 운동: " + sport[i] + "<br>");
+		} else
+			out.println("<h4>좋아하는 운동: 없음");
+		out.println("<br>성별: " + sex);
 	}
 
 	/**
