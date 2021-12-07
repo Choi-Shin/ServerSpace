@@ -28,7 +28,7 @@
 		} else {
 			UserDAO userDAO = new UserDAO();
 			int result = userDAO.join(user);
-			if (result == -1) {
+			if (result != 0) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('이미 존재하는 아이디입니다.')");
