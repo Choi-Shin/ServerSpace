@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="user.UserDAO" %>
+<%@ page import="bbs.user.UserDAO" %>
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:useBean id="user" class="bbs.user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -17,9 +17,9 @@
 </head>
 <body>
 	<%
-		if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
+		if (user.getUserId() == null || user.getUserPassword() == null || user.getUserName() == null
 			|| user.getUserGender() == null || user.getUserEmail() == null) {
-			session.setAttribute("userID", user.getUserID());
+			session.setAttribute("userID", user.getUserId());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안된 사항이 있습니다.')");
