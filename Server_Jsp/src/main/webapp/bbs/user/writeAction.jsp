@@ -15,8 +15,8 @@
 <body>
   <%
   	String userID = null;
-  	if (session.getAttribute("userId") != null) {
-  		userID = (String) session.getAttribute("userId");
+  	if (session.getAttribute("userID") != null) {
+  		userID = (String) session.getAttribute("userID");
   	}
   	if (userID == null) {
   		PrintWriter script = response.getWriter();
