@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap');
+* {
+	font-family: 'Nanum Gothic';
+}
+
+h1 {
+	font-family: 'Do Hyeon';
+}

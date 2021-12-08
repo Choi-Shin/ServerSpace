@@ -17,9 +17,9 @@
 </head>
 <body>
 	<%
-		if (user.getUserId() == null || user.getUserPassword() == null || user.getUserName() == null
+		if (user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null
 			|| user.getUserGender() == null || user.getUserEmail() == null) {
-			session.setAttribute("userID", user.getUserId());
+			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안된 사항이 있습니다.')");

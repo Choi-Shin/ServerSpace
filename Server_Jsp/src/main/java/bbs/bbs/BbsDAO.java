@@ -12,11 +12,12 @@ public class BbsDAO {
 
 	public BbsDAO() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";
-			String dbID = "root";
-			String dbPassword = "hero0825";
-			Class.forName("com.mysql.jdbc.Driver");
+			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+			String dbID = "bbs";
+			String dbPassword = "bbs";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			System.out.println("접속 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -107,4 +108,54 @@ public class BbsDAO {
 		}
 		return false;
 	}
+
+	public Bbs getBbs(int bbsID) {
+	String SQL = "SELECT * FROM BBS WHERE bbsID = ?";
+
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
+		pstmt.setInt(1, bbsID);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			Bbs bbs = new Bbs();
+			bbs.setBbsID(rs.getInt(1));
+			bbs.setBbsTitle(rs.getString(2));
+			bbs.setUserID(rs.getString(3));
+			bbs.setBbsDate(rs.getString(4));
+			bbs.setBbsContent(rs.getString(5));
+			bbs.setBbsAvailable(rs.getInt(1));
+			return bbs;
+		}			
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+public int update(int bbsID, String bbsTitle, String bbsContent) {
+	String SQL = "UPDATE BBS SET bbsTitle = ?, bbsContent = ? WHERE bbsID =?";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
+		pstmt.setString(1, bbsTitle);
+		pstmt.setString(2, bbsContent);
+		pstmt.setInt(3, bbsID);
+
+		return pstmt.executeUpdate();
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+	return -1; // 데이터베이스 오류
+}
+
+public int delete(int bbsID) {
+	String SQL = "UPDATE BBS SET bbsAvailable = 0 WHERE bbsID = ?";
+	try {
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
+		pstmt.setInt(1, bbsID);
+
+		return pstmt.executeUpdate();
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+	return -1; // 데이터베이스 오류
+}
 }

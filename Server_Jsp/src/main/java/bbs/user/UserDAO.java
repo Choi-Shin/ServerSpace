@@ -18,13 +18,14 @@ public class UserDAO {
 			String dbPassword = "bbs";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			System.out.println("접속 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public int login(String userID, String userPassword) {
-		String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
+		String SQL = "SELECT userPassword FROM member WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1,  userID);
@@ -32,6 +33,7 @@ public class UserDAO {
 
 			if (rs.next()) {
 				if (rs.getString(1).equals(userPassword)) {
+					System.out.println("로그인");
 					return 1; // 로그인 성공
 				} else {
 					return 0; // 비밀번호 불일치
@@ -45,7 +47,7 @@ public class UserDAO {
 	}
 
 	public int join(User user) {
-		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO member VALUES (?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());

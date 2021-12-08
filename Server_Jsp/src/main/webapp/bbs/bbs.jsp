@@ -15,10 +15,15 @@
 </head>
 <body>
 	<%
-	String userID = null;
-	if (session.getAttribute("userID") != null) {
-		userID = (String) session.getAttribute("userID");
-	}
+		String userID = null;
+		if (session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		
+		int pageNumber = 1; //현재 몇페이지에 있는지를 알림
+		if (request.getParameter("pageNumber") != null){
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
 	%>
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
