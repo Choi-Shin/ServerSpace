@@ -39,10 +39,10 @@ div {
 		$("#send").on(
 				"click",
 				function() {
-					if ($("#id").val() != "" || $("#pw").val() != "") {
-						$("#result").append(
+					if ($("#id").val() != "" && $("#pw").val() != "") {
+						$("#result").empty().append(
 								"아이디:: " + $("#id").val() + "<br>비밀번호:: "
-										+ $("#pw").val())
+										+ $("#pw").val() +"<br>")
 
 					} else {
 						alert("아이디와 비밀번호를 입력하세요.");
