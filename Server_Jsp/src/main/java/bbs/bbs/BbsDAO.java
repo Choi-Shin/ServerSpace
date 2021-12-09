@@ -24,7 +24,7 @@ public class BbsDAO {
 	}
 
 	public String getDate() {
-		String SQL = "SELECT NOW()"; // 현재 시간 가져오기
+		String SQL = "SELECT sysdate from dual"; // 현재 시간 가져오기
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -62,8 +62,9 @@ public class BbsDAO {
 			pstmt.setString(4, getDate());
 			pstmt.setString(5, bbsContent);
 			pstmt.setInt(6, 1);
-
-			return pstmt.executeUpdate();
+			int write = pstmt.executeUpdate();
+			System.out.println(write);
+			return write;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,7 +72,7 @@ public class BbsDAO {
 	}
 
 	public ArrayList<Bbs> getList(int pageNumber) {
-		String SQL = "SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
+		String SQL = "SELECT * FROM (SELECT * FROM BBS WHERE bbsID < ? AND bbsAvailable = 1 ORDER BY bbsID DESC) WHERE rownum <= 10";
 		ArrayList<Bbs> list = new ArrayList<Bbs>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -84,7 +85,7 @@ public class BbsDAO {
 				bbs.setUserID(rs.getString(3));
 				bbs.setBbsDate(rs.getString(4));
 				bbs.setBbsContent(rs.getString(5));
-				bbs.setBbsAvailable(rs.getInt(1));
+				bbs.setBbsAvailable(rs.getInt(6));
 				list.add(bbs);
 			}
 		} catch (Exception e) {
