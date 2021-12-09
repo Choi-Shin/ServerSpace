@@ -1,7 +1,6 @@
 <%@page import="org.apache.tomcat.util.descriptor.web.ErrorPage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page errorPage="" %>
 <!DOCTYPE html>
 <html>
 <head>
