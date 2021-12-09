@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.Enumeration" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +26,15 @@ border : 1px solid black;
 <tr><th colspan="2">Session 영역에 저장된 내용들</th></tr>
 </thead>
 <tbody>
-<tr><td>address</td><td><%=session.getAttribute("city") %></td></tr>
-<tr><td>tel</td><td><%=session.getAttribute("phone")%></td></tr>
-<tr><td>email</td><td><%=session.getAttribute("email")%></td></tr>
+
+<%
+    Enumeration<String> e = session.getAttributeNames();
+    while(e.hasMoreElements()) {
+        String name = e.nextElement();
+        String value = (String)session.getAttribute(name);
+        out.print("<tr><td>" + name + "</td><td>" + value + "</td></tr>");
+    }
+%>
 </tbody></table>
 </body>
 </html>
