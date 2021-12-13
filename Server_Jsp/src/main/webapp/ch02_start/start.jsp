@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% request.setCharacterEncoding("utf-8");
-String name = request.getParameter("name");%>
-환영합니다. <%=name %>님
+이름: <%=request.getParameter("name") %> 환영합니다.<br>
 </body>
 </html>

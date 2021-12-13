@@ -8,29 +8,28 @@
 </head>
 <body>
 <%
-	int sum = 0;
-	for(int i=0; i<=10; i++) {
-		sum = sum + i;
-	}
-	System.out.println("colsole: " + sum);
+ int sum=0;
+ for(int i=0; i <= 10; i++){
+	 sum = sum+i; 
+ }
+ System.out.println("console: "+sum);
 %>
 <hr>
 <%
-	int sum2 = 0;
-	for(int i=0; i<=10; i++) {
-		sum2 = sum + i;
-	}
-	out.println("web output: " + sum2);
-	out.write("write: " + sum2);
+ int sum2=0;
+ for(int i=0; i <= 10; i++){
+	 sum2 = sum2+i; 
+ }
+ out.println("web output: "+sum2);
 %>
 <hr>
 <%
-	int sum3 = 0;
-	for(int i=0; i<=10; i++) {
-		sum3 = sum2 + i;
-	}
+ int sum3=0;
+ for(int i=0; i <= 10; i++){
+	 sum3 = sum3+i; 
+ }
 %>
-web output2: <%= sum3 %>
+ web output2: <%=sum3 %>
 <hr>
 </body>
 </html>

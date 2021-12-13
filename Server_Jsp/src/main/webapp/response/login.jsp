@@ -1,22 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-
+<%@page import="java.net.URLEncoder"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<% 
-String id = request.getParameter("memberId");
-if(id.equals("admin")) {
-    response.sendRedirect("index.jsp");
-} else {
-	out.println("�߸��� id �Դϴ�.");
-}
+<%
+
+// 주석
+/* 여러줄 주석 */
+  String id=request.getParameter("memberid");
+  if(id != null && id.equals("admin")){
+	  String value="홍길동";
+	  String encodeValue = URLEncoder.encode(value,"utf-8");
+	  response.sendRedirect("index.jsp?name="+encodeValue);
+  }else{
+	  out.println("잘못된 id입니다.");
+  }
 %>
 </body>
 </html>
