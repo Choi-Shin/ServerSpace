@@ -26,4 +26,14 @@
   <servlet-name>Result-Servlet</servlet-name>
   <url-pattern>/study/10/result</url-pattern>
   </servlet-mapping>
+  
+  <display-name>Ch11_EL</display-name>
+  <context-param>
+  <param-name>AGE</param-name>
+  <param-value>30</param-value>
+  </context-param>
+  <context-param>
+  <param-name>Name</param-name>
+  <param-value>GZ</param-value>
+  </context-param>
 </web-app>
