@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class AnimailServlet
  */
-@WebServlet("/study/10/animal")
-public class AnimailServlet extends HttpServlet {
+//@WebServlet("/study/10/animal")
+public class AnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**

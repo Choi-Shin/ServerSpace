@@ -20,20 +20,24 @@ public class CartDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=UTF-8");
-		HttpSession session = request.getSession();
-		session.invalidate();
-		PrintWriter out = response.getWriter();
-		out.print("<html><body>장바구니 비웠음!!<br>");
-		out.print("<a href='product.html'>상품 선택 페이지</a></body></html>");
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("<html><body>장바구니 비웠음!!<br>");
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
+		} else {
+			out.println("세션 없음<br>");
+		}
+		out.print("<a href='product.html'>상품 선택 페이지</a></body></html>");
+
 	}
 
 }

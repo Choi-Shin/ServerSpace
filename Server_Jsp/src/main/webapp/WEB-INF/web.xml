@@ -10,4 +10,20 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <servlet>
+  <servlet-name>Animal-Servlet</servlet-name>
+  <servlet-class>study.AnimalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Animal-Servlet</servlet-name>
+  <url-pattern>/study/10/animal</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>Result-Servlet</servlet-name>
+  <servlet-class>study.ResultServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Result-Servlet</servlet-name>
+  <url-pattern>/study/10/result</url-pattern>
+  </servlet-mapping>
 </web-app>

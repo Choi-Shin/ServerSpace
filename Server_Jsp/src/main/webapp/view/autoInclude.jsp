@@ -8,6 +8,6 @@
 </head>
 <body>
 <hr>
- 현재 시간은 <%= CURRENT_TIME %>입니다.<hr>
+ 현재 시간은 입니다.<hr>
 </body>
 </html>

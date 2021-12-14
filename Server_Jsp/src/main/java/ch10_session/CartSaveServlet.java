@@ -20,24 +20,24 @@ public class CartSaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		String product = request.getParameter("product");
 		HttpSession session = request.getSession();
-		Enumeration<String> a = session.getAttributeNames();
-		int count = 1;
-		while(a.hasMoreElements()) {
-			a.nextElement().contains(product);
-			count++;
+		String p = request.getParameter("product");
+		ArrayList<String> list = (ArrayList<String>) session.getAttribute("product");
+		if(list == null) {
+			list = new ArrayList<String>();
+			list.add(p);
+			session.setAttribute("product", list);
+		} else {
+			list.add(p);
 		}
-		session.setAttribute("product " + count, product);
+		
 		PrintWriter out = response.getWriter();
 		out.print("<html><body>Product 추가<br><a href='CartBasket'>장바구니 보기</a>");
 		out.print("</body></html>");
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

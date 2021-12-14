@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page session="true" %>
-    
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="session.jpg"><br>
+<% Cookie[] c = request.getCookies(); 
+	for(int i = 0; i<c.length; i++) {
+		c[i].setMaxAge(0);
+		response.addCookie(c[i]);
+		out.println(c[i]);
+	}
+%>
 </body>
 </html>
