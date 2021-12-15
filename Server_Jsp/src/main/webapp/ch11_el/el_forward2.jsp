@@ -12,7 +12,7 @@ scope name :: ${requestScope.name}<br>
 member.id :: ${member.id} <br>
 member.name :: ${member.name} <br>
 
-요청 URI(생략전) \${pageContext.getRequest().getRequestURI()} <br>
+요청 URI(생략전) <br>
 요청 URI: ${pageContext.request.requestURI} <br>
 요청 URI(jsp): <%=request.getRequestURI() %> <br>
 파라미터 code: ${param.code} <br>
