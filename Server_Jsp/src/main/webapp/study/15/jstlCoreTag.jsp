@@ -16,10 +16,10 @@
 	request.setAttribute("oneToTen", oneToTen);
 %>
 <c:forEach items="${oneToTen}" var="num">
-${num}&nbsp;
+<c:out value="${num}"></c:out>&nbsp;
 </c:forEach><br>
 <c:forEach items="${oneToTen}" var="num" begin="0" end="6">
-${num}&nbsp;
+<c:out value="${num}"></c:out>&nbsp;
 </c:forEach><br><br>
 <h3><b>JSTL Core 라이브러리 실습2(ArrayList:홍길동, 이순신, 유관순)</b></h3>
 <%
@@ -30,16 +30,16 @@ name.add("유관순");
 request.setAttribute("name", name);
 %>
 <c:forEach items="${name}" var="name">
-${name} &nbsp;
+<c:out value="${name}"></c:out>&nbsp;
 </c:forEach><br>
 <h3><b>JSTL Core 라이브러리 실습3(String: A,B,C,D)</b></h3>
 <%
-	String[] alpha = {"A","B","C","D"};
+	String alpha = "A,B,C,D";
 	request.setAttribute("alpha", alpha);
 %>
-<c:forEach items="${alpha}" var="a">
+<c:forTokens items="${alpha}" delims="," var="a">
 ${a}<br>
-</c:forEach>
+</c:forTokens>
 
 </body>
 </html>

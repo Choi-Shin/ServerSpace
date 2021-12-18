@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+fieldset {
+	border: 1px solid lightgrey;
+}
+</style>
+<script src= "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+function numCheck(number) {
+	    if (number.value.length > number.maxLength){
+	    	number.value = number.value.slice(0, number.maxLength);
+	    }    
+}
+</script>
+</head>
+<body>
+	<h3>
+		<b>Emp 테이블에 데이터 저장 실습</b>
+	</h3>
+	<form action="EmpInsert">
+		<fieldset>
+			<legend>emp 폼</legend>
+			<ul>
+				<li>사원 아이디&nbsp;<input type="number" name="empno" maxlength="4" oninput="numCheck(this)"
+					required="required"></li>
+				<li>사원명&nbsp;<input type="text" name="ename" maxlength="10" ></li>
+				<li>급여&nbsp;<input type="number" name="sal" maxlength="5" oninput="numCheck(this)"></li>
+				<li>부서명&nbsp; <input type="text" list="deptno" name="deptno">
+				<datalist id="deptno">
+				<option value="10"></option>
+				<option value="20"></option>
+				<option value="30"></option>
+				<option value="40"></option>
+				</datalist>
+				<li><input type="submit" value="저장"></li>
+			</ul>
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -36,6 +36,5 @@
     이름<input type="text" name="name"><br>
     <input type="submit" value="전송">
 </form>
-  </script>
 </body>
 </html>
