@@ -7,22 +7,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import ch18.mvc.vo.EmpDTO;
 
 public class EmpDAO_Pool {
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
+	Context initContext;
+	DataSource ds;
 
 	public EmpDAO_Pool() {
+		
+
 		try {
-			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
-			String dbID = "scott";
-			String dbPassword = "scott";
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			System.out.println("접속 성공");
-		} catch (Exception e) {
+			initContext = new InitialContext();
+			Context envContext = (Context) initContext.lookup("java:/comp/env");
+			ds = (DataSource) envContext.lookup("jdbc/OracleDB");
+
+		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
@@ -30,9 +34,13 @@ public class EmpDAO_Pool {
 	public ArrayList<EmpDTO> select() {
 		String sql = "select empno, ename, sal, deptno from emp";
 		ArrayList<EmpDTO> select = new ArrayList<EmpDTO>();
+		Connection conn = null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				EmpDTO emp = new EmpDTO();
 				emp.setEmpno(rs.getString("empno"));
