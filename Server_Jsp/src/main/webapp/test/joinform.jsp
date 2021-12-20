@@ -31,8 +31,8 @@
 
 <form action="join.jsp" method="post">
     아이디<input type="text" name="id" autofocus><br>
-    암호<input type="password" name="pw" id="pw1"><br>
-   	암호 확인<input type="password" name="pw" id="pw2" onchange="test()"><br>
+    암호<input type="password" name="password" id="pw1"><br>
+   	암호 확인<input type="password" name="password" id="pw2" onchange="test()"><br>
     이름<input type="text" name="name"><br>
     <input type="submit" value="전송">
 </form>

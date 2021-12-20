@@ -1,3 +1,5 @@
+package test;
+
 import java.sql.Date;
 
 public class Member {
@@ -43,7 +45,4 @@ public class Member {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-
-
-
 }

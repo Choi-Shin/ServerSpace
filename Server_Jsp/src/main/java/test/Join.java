@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-// @WebServlet("join.do")
+//@WebServlet("join.do")
 public class Join extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class Join extends HttpServlet {
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		RequestDispatcher d = request.getRequestDispatcher("login.jsp");
-		MemberDAO dao = new MemberDAO();
+		MemberDaojoin dao = new MemberDaojoin();
 		int result = dao.login(id, password);
 		//데이터가 존재할 경우
 		if (result == 1) {
