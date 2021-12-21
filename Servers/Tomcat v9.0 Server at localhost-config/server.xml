@@ -71,7 +71,8 @@
     <!-- Define an SSL/TLS HTTP/1.1 Connector on port 8443
          This connector uses the NIO implementation. The default
          SSLImplementation will depend on the presence of the APR/native
-         library and the useOpenSSL attribute of the AprLifecycleListener.
+         library and the useOpenSSL attribute of the
+         AprLifecycleListener.
          Either JSSE or OpenSSL style configuration may be used regardless of
          the SSLImplementation selected. JSSE style configuration is used below.
     -->
@@ -152,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Server_Servlet" path="/Server_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:Server_Servlet"/><Context docBase="Server_Jsp" path="/Server_Jsp" reloadable="true" source="org.eclipse.jst.jee.server:Server_Jsp"/><Context docBase="Ch15_Guest" path="/Ch15_Guest" reloadable="true" source="org.eclipse.jst.jee.server:Ch15_Guest"/></Host>
+      <Context docBase="Server_Servlet" path="/Server_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:Server_Servlet"/><Context docBase="Server_Jsp" path="/Server_Jsp" reloadable="true" source="org.eclipse.jst.jee.server:Server_Jsp"/><Context docBase="JSPproject" path="/" reloadable="true" source="org.eclipse.jst.jee.server:JSPproject"/><Context docBase="Ch2122_Bbs" path="/Ch2122_Bbs" reloadable="true" source="org.eclipse.jst.jee.server:Ch2122_Bbs"/></Host>
     </Engine>
   </Service>
 </Server>
