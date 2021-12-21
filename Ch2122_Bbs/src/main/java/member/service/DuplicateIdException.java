@@ -1,5 +1,4 @@
 package member.service;
 
-public class DuplicateIdException {
-	
+public class DuplicateIdException extends  {
 }
