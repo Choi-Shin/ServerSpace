@@ -1,4 +1,4 @@
 package member.service;
 
-public class DuplicateIdException extends  {
+public class DuplicateIdException extends RuntimeException {
 }
