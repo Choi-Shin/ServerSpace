@@ -43,15 +43,12 @@ public class MemberDao {
 			pstmt.setString(2, password);
 			pstmt.setString(3, name);
 			result = pstmt.executeUpdate();
-			if (result > 0) {
-				return result;
-			} else {
-				return result;
-			}
-		} catch (SQLException ex) {
-		}
-		finally {
-			if(pstmt != null) {
+			return result;
+		} catch (
+
+		SQLException ex) {
+		} finally {
+			if (pstmt != null) {
 				try {
 					pstmt.close();
 				} catch (SQLException e) {
@@ -59,7 +56,7 @@ public class MemberDao {
 					e.printStackTrace();
 				}
 			}
-			if(conn != null) {
+			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {

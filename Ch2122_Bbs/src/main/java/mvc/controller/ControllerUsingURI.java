@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
+import mvc.command.NullHandler;
 
 public class ControllerUsingURI extends HttpServlet {
 
@@ -45,23 +47,34 @@ public class ControllerUsingURI extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		process(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		process(request, response);
 	}
-	
-	private void process(HttpServletRequest request, HttpServletResponse response) {
+
+	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getRequestURI();
 		if (command.indexOf(request.getContextPath()) == 0) {
-			command = command
+			command = command.substring(request.getContextPath().length());
+		}
+		CommandHandler handler = commandHandlerMap.get(command);
+		if (handler == null) {
+			handler = new NullHandler();
+		}
+		String viewPage = null;
+		
+		try {
+			viewPage = handler.process(request, response);
+		} catch (Throwable e) {
+			throw new ServletException(e);
+		}
+		
+		if (viewPage != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
 		}
 	}
 }

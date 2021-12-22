@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MemberDaojoin {
+public class MemberDaologin {
 
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -14,7 +14,7 @@ public class MemberDaojoin {
 	private String dbID = "jsp";
 	private String dbPassword = "jsp";
 
-	public MemberDaojoin() {
+	public MemberDaologin() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {

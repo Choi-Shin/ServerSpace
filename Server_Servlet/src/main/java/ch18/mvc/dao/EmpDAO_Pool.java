@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -36,11 +37,11 @@ public class EmpDAO_Pool {
 		ArrayList<EmpDTO> select = new ArrayList<EmpDTO>();
 		Connection conn = null;
 		ResultSet rs = null;
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		try {
 			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				EmpDTO emp = new EmpDTO();
 				emp.setEmpno(rs.getString("empno"));
@@ -53,7 +54,7 @@ public class EmpDAO_Pool {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstmt.close();
+				stmt.close();
 				conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

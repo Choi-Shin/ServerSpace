@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ch18.mvc.dao.EmpDAO;
+import ch18.mvc.dao.EmpDAO_Pool;
 import ch18.mvc.vo.EmpDTO;
 
 @WebServlet("/ch18/emppool")
@@ -21,8 +22,8 @@ public class EmpSelectServletDAO_Pool extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		EmpDAO dao = new EmpDAO();
-		ArrayList<EmpDTO> dto = dao.select();
+		EmpDAO_Pool daoPool = new EmpDAO_Pool();
+		ArrayList<EmpDTO> dto = daoPool.select();
 		
 		for (int i = 0; i < dto.size(); i++) {
 			out.print(dto.get(i).toString()+"<hr>");
