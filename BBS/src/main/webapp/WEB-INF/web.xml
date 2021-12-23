@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	<display-name>Ch2122_Bbs</display-name>
+	<display-name>BBS</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -11,7 +11,7 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
+	</welcome-file-list> 
 
 	<listener>
 		<listener-class>jdbc.DBCPInitListener</listener-class>
@@ -46,8 +46,8 @@
 	</filter-mapping>
 	
 	<servlet>
-		<servlet-name>ControllerUsingURI</servlet-name>
-		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
+		<servlet-name>ControllerURI</servlet-name>
+		<servlet-class>mvc.controller.ControllerURI</servlet-class>
 		<init-param>
 			<param-name>configFile</param-name>
 			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
@@ -56,7 +56,7 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>ControllerUsingURI</servlet-name>
+		<servlet-name>ControllerURI</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
