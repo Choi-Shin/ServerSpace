@@ -3,10 +3,11 @@
 
 ---
 
-#index
+# index
 + [기능적 구조](#기능적-구조)
 + [회원파트 패턴 구조](#회원파트-패턴-구조)
 + [실행 흐름](#실행-흐름)
++ [패턴별 메소드](#패턴별-메소드)
 
 ---
 
@@ -26,14 +27,19 @@
 
 ### 회원파트-패턴-구조
 + M
-  - member.command.Member
-  (회원 DTO)
-  [메소드 보기](#member)
-  - member.service.JoinRequest
-  (회원 가입을 위한 DTO)
-  [메소드보기](#join-request)
-  - auth.controller.User
-  (로그인 회원 DTO)
+  - DAO
+    - member.dao.MemberDao
+	(데이터 접근 모델)
+	[메소드 보기](#member-dao)
+  - DTO
+    - member.command.Member
+  	(회원 DTO)
+  	[메소드 보기](#member)
+    - member.service.JoinRequest
+  	(회원 가입을 위한 DTO)
+  	[메소드보기](#join-request)
+    - auth.controller.User
+  	(로그인 회원 DTO)
 
 + V
   - index.jsp(메인화면)
@@ -45,6 +51,7 @@
 	- joinForm.jsp
 	- joinSuccess.jsp
 	- loginForm.jsp
+
 -----
 
 ##### 실행-흐름
@@ -60,10 +67,10 @@
 
 ----
 
-[맨 위로](#index)
+# 패턴별-메소드
 
 ### M(model)
-
+### dto
 #### member
 <details>
 <summary>Constructor using field()</summary>
@@ -138,7 +145,6 @@ public void changePassword(String newPwd) {
 </details>
 
 #### join-request
-
 <details>
 <summary>Getter & Setter</summary>
 <div markdown="1">
@@ -243,3 +249,7 @@ private void checkEmpty(Map<String, Boolean> errors,
 ~~~
 </div>
 </details>
+
+---
+
+[맨 위로](#index)
