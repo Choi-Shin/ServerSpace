@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
 	<display-name>BBS</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -17,8 +19,16 @@
 
 	<context-param>
 		<param-name>poolConfig</param-name>
-		<param-value> jdbcdriver=oracle.jdbc.driver.OracleDriver jdbcUrl=jdbc:oracle:thin:@localhost:1521:xe dbUser=bbs dbPass=bbs validationQuery=select 1 from dual minIdle=3 maxTotal=30 poolName=board
-		</param-value>
+		<param-value>
+  		jdbcdriver=oracle.jdbc.driver.OracleDriver
+  		jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
+		dbUser = bbs
+		dbPass = bbs
+		validationQuery=select 1 from dual
+  		minIdle=3
+  		maxTotal=30
+  		poolName=board
+  	</param-value>
 	</context-param>
 
 	<filter>
@@ -36,8 +46,8 @@
 	</filter-mapping>
 
 	<servlet>
-		<servlet-name>ControllerUsingURI.java</servlet-name>
-		<servlet-class>mvc.controller.ControllerUsingURI.java</servlet-class>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
 		<init-param>
 			<param-name>configFile</param-name>
 			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
@@ -46,7 +56,7 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>ControllerUsingURI.java</servlet-name>
+		<servlet-name>ControllerUsingURI</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 

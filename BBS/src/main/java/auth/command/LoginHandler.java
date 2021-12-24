@@ -38,6 +38,7 @@ public class LoginHandler implements CommandHandler {
 		String pw = trim(request.getParameter("password"));
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		request.setAttribute("errors", errors);
 		
 		if (id == null || id.isEmpty()) {
 			errors.put("id", Boolean.TRUE);

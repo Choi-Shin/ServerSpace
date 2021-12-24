@@ -19,14 +19,14 @@
 </c:if>
 --%>
 <u:isLogin>
-	CT: ${authUser.name}님, 안녕하세요.
+	${authUser.name}님, 안녕하세요.
 	<a href="logout.do">[로그아웃하기]</a>
 	<a href="changePwd.do">[암호변경하기]</a>
 	<a href="list.do">[게시판 보기]</a>
 </u:isLogin>
 <br>
 <u:notLogin>
-	CT: <a href="join.do">[회원가입하기]</a>
+	<a href="join.do">[회원가입하기]</a>
 	<a href="login.do">[로그인하기]</a>
 	<a href="list.do">[게시판 보기]</a>
 </u:notLogin>
