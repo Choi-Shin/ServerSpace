@@ -12,6 +12,7 @@ public class ArticlePage {
 	private int totalPages;
 	private int startPage;
 	private int endPage;
+	
 	public ArticlePage(int total, int currentPage, int size, List<Article> article) {
 		this.total = total;
 		this.currentPage = currentPage;
@@ -40,6 +41,15 @@ public class ArticlePage {
 	public int getCurrentPage() {
 		return currentPage;
 	}
+	
+	public boolean hasNoArticles() {
+		return total == 0;
+	}
+	
+	public boolean hasArticles() {
+		return total > 0;
+	}
+	
 	public List<Article> getArticle() {
 		return article;
 	}

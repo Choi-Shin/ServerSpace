@@ -9,7 +9,7 @@ import article.model.Article;
 import jdbc.connection.ConnectionProvider;
 
 public class ListArticleService {
-	private ArticleDao dao;
+	private ArticleDao dao = new ArticleDao();
 	private int size = 10;
 	
 	public ArticlePage getArticlePage(int pageNum) {
