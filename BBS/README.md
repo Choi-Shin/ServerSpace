@@ -55,11 +55,11 @@
 -----
 
 ##### 실행-흐름
-1. web.xml에 매핑된 ControllerURI는 
-   시작과 동시에 실행되는 파일이다. (load on startup)
-   프로퍼티의 key(*.do)와 value(파일 경로)를 이용하여
-   각 이름에 따른 handler Class를 맵에 저장한다.
-   (key: hadlerClassName, value: HandlerClass)
+1. web.xml에 매핑된 ControllerURI는 <br>
+   시작과 동시에 실행되는 파일이다. (load on startup)<br>
+   프로퍼티의 key(*.do)와 value(파일 경로)를 이용하여<br>
+   각 이름에 따른 handler Class를 맵에 저장한다.<br>
+   (key: hadlerClassName, value: HandlerClass)<br>
 2. jsp가 *.do를 호출하면 ControllerURI가 GET or POST로
    요청을 받아 각 이름의 핸들러 instance를(value값) 
    맵에서 얻어서 CommandHandler(인터페이스)에 담는다.
