@@ -8,6 +8,7 @@
 + [회원파트 패턴 구조](#회원파트-패턴-구조)
 + [실행 흐름](#실행-흐름)
 + [패턴별 메소드](#패턴별-메소드)
++ [전체 트리 구조](#전체-트리-구조)
 
 ---
 
@@ -40,13 +41,12 @@
   	[메소드보기](#join-request)
     - auth.controller.User
   	(로그인 회원 DTO)
+  - Service
 
 + V
   - index.jsp(메인화면)
   - view
 	- changePwdForm.jsp
-	컨트롤러: 
-	member.command.ChangePasswordHandler
 	- changePwdSuccess.jsp
 	- joinForm.jsp
 	- joinSuccess.jsp
@@ -58,38 +58,43 @@
 1. web.xml에 매핑된 ControllerURI는 
    시작과 동시에 실행되는 파일이다. (load on startup)
    프로퍼티의 key(*.do)와 value(파일 경로)를 이용하여
-   각 이름에 따른 handler Class의 새 인스턴스를 생성한다.
-2. jsp가 *.do를 호출하면 ControllerURI가 get or post로
-   요청을 받아 각 이름의 핸들러 instance를 생성한다.
-
-
+   각 이름에 따른 handler Class를 맵에 저장한다.
+   (key: hadlerClassName, value: HandlerClass)
+2. jsp가 *.do를 호출하면 ControllerURI가 GET or POST로
+   요청을 받아 각 이름의 핸들러 instance를(value값) 
+   맵에서 얻어서 CommandHandler(인터페이스)에 담는다.
+3. handler Class는 그 자신의 process 메소드를 실행하여
+   그에 따른 viewPage를 반환한다.
+4. GET인 경우 Handler 안에 선언된 상수 FORM_VIEW를
+   호출하여 양식을 보여주고 POST인 경우 값을 저장하거나 불러온 다음
+   양식을 호출한다.(예외가 발생할 경우 바로 양식 호출)
+5. 
 
 
 ----
 
 # 패턴별-메소드
 
-### M(model)
-### dto
+### M(model)-DTO
 #### member
+
 <details>
-<summary>Constructor using field()</summary>
+<summary>&nbsp;&nbsp;&nbsp;Constructor using field()</summary>
 <div markdown="1">
 
 ~~~java
 public Member(String id, String name, String password, Date regDate) {
-		this.id = id;
-		this.name = name;
-		this.password = password;
-		this.regDate = regDate;
+	this.id = id;
+	this.name = name;
+	this.password = password;
+	this.regDate = regDate;
 	}
 ~~~
-
 </div>
 </details>
 
 <details>
-<summary>Getter()</summary>
+<summary>&nbsp;&nbsp;&nbsp;Getter()</summary>
 <div markdown="1">
 
 ~~~java
@@ -118,7 +123,7 @@ public Date getRegDate() {
 </details>
 
 <details>
-<summary>matchPassword()</summary>
+<summary>&nbsp;&nbsp;&nbsp;matchPassword()</summary>
 <div markdown="1">
 
 ~~~java
@@ -132,7 +137,7 @@ public boolean matchPassword(String pwd) {
 </details>
 
 <details>
-<summary>changePassord()</summary>
+<summary>&nbsp;&nbsp;&nbsp;changePassord()</summary>
 <div markdown="1">
 
 ~~~java
@@ -146,7 +151,7 @@ public void changePassword(String newPwd) {
 
 #### join-request
 <details>
-<summary>Getter & Setter</summary>
+<summary>&nbsp;&nbsp;&nbsp;Getter & Setter</summary>
 <div markdown="1">
 
 ~~~java
@@ -195,7 +200,7 @@ public void setConfirmPassword(String confirmPassword) {
 
 
 <details>
-<summary>isPasswordEqualToConfirm()</summary>
+<summary>&nbsp;&nbsp;&nbsp;isPasswordEqualToConfirm()</summary>
 <div markdown="1">
 
 ~~~java
@@ -207,15 +212,8 @@ public boolean isPasswordEqualToConfirm() {
 </details>
 
 <details>
-<summary>validate()</summary>
+<summary>&nbsp;&nbsp;&nbsp;validate()</summary>
 <div markdown="1">
-
--details
-value값이 비어있으면 errors.put(fieldName, Boolean.TRUE)을 수행하는
-checkEmpty() 메소드를 사용한다. 
-isPasswordEqualToConfirm()로 암호와 확인 암호가 같은지
-체크하여 역시 errors 맵에 담는다.
-errors가 비어있지 않다는 것은 어떠한 에러가 존재한다는 의미
 
 ~~~java
 //유효성 검증
@@ -232,11 +230,16 @@ public void validate(Map<String, Boolean> errors) {
 	}
 ~~~
 
+  - value값이 비어있으면 errors.put(fieldName, Boolean.TRUE)을 수행하는 checkEmpty() 메소드를 사용한다. 
+  isPasswordEqualToConfirm()로 암호와 확인 암호가 같은지
+  체크하여 역시 errors 맵에 담는다.
+  errors가 비어있지 않다는 것은 어떠한 에러가 존재한다는 의미
+
 </div>
 </details>
 
 <details>
-<summary>checkEmpty()</summary>
+<summary>&nbsp;&nbsp;&nbsp;checkEmpty()</summary>
 <div markdown="1">
 
 ~~~java
