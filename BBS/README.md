@@ -1,9 +1,9 @@
 
-#BBS app Introduction
+# BBS app Introduction
 
 ---
 
-###기능적 구조
+### 기능적 구조
 + 회원 파트
   - 회원가입
   - 로그인
@@ -17,7 +17,7 @@
   - 글삭제
 ---
 
-###회원파트 패턴 구조
+### 회원파트 패턴 구조
 + M
   - member.command.Member
   (회원 DTO)
@@ -40,7 +40,7 @@
 	- loginForm.jsp
 -----
 
-#####실행 흐름
+##### 실행 흐름
 1. web.xml에 매핑된 ControllerURI는 
    시작과 동시에 실행되는 파일이다. (load on startup)
    프로퍼티의 key(*.do)와 value(파일 경로)를 이용하여
@@ -53,9 +53,9 @@
 
 ----
 
-###M(model)
+### M(model)
 
-####member
+#### member
 <details>
 <summary>Constructor using field()</summary>
 <div markdown="1">
@@ -128,7 +128,7 @@ public void changePassword(String newPwd) {
 </div>
 </details>
 
-####join-request
+#### join-request
 
 <details>
 <summary>Getter & Setter</summary>
