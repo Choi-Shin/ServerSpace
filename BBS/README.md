@@ -60,13 +60,13 @@
    프로퍼티의 key(*.do)와 value(파일 경로)를 이용하여<br>
    각 이름에 따른 handler Class를 맵에 저장한다.<br>
    (key: hadlerClassName, value: HandlerClass)<br>
-2. jsp가 *.do를 호출하면 ControllerURI가 GET or POST로
-   요청을 받아 각 이름의 핸들러 instance를(value값) 
+2. jsp가 *.do를 호출하면 ControllerURI가 GET or POST로<br>
+   요청을 받아 각 이름의 핸들러 instance를(value값) <br>
    맵에서 얻어서 CommandHandler(인터페이스)에 담는다.
-3. handler Class는 그 자신의 process 메소드를 실행하여
-   그에 따른 viewPage를 반환한다.
-4. GET인 경우 Handler 안에 선언된 상수 FORM_VIEW를
-   호출하여 양식을 보여주고 POST인 경우 값을 저장하거나 불러온 다음
+3. handler Class는 그 자신의 process 메소드를 실행하여<br>
+   그에 따른 viewPage를 반환한다.<br>
+4. GET인 경우 Handler 안에 선언된 상수 FORM_VIEW를<br>
+   호출하여 양식을 보여주고 POST인 경우 값을 저장하거나 불러온 다음<br>
    양식을 호출한다.(예외가 발생할 경우 바로 양식 호출)
 5. 
 
