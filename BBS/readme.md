@@ -1,6 +1,8 @@
+
 #BBS app Introduction
 
 ---
+
 ###기능적 구조
 + 회원 파트
   - 회원가입
@@ -14,6 +16,7 @@
   - 글수정
   - 글삭제
 ---
+
 ###회원파트 패턴 구조
 + M
   - member.command.Member
