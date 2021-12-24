@@ -1,5 +1,5 @@
 
-# BBS app Introduction(작성 중...)
+# BBS webApp Introduction(작성 중...)
 
 ---
 
