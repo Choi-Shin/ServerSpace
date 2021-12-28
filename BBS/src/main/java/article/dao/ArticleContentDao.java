@@ -1,5 +1,7 @@
 package article.dao;
 
 public class ArticleContentDao {
-	public int insert ()
+	public int insert () {
+		return 0;
+	}
 }
